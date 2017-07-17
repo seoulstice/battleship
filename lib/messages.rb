@@ -1,13 +1,16 @@
 module Message
 
   def start_message
-    puts "Welcome to BATTLESHIP
+    puts "\n
+    Welcome to BATTLESHIP
 
     Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
 
   def instruction_message
-    puts ""
+    puts "\n
+          How to Play Battleship
+          ----------------------"
 
   end
 

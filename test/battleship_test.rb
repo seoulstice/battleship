@@ -10,6 +10,10 @@ class BattleshipTest < Minitest::Test
     assert_instance_of Battleship, ship
   end
 
+  def test_start_game
+    ship = Battleship.new
+    ship.start_game("A1", "A2")
+  end
 
 
 

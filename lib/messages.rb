@@ -11,7 +11,6 @@ module Message
     puts "\n
           How to Play Battleship
           ----------------------"
-
   end
 
   def ship_placement_message
@@ -27,7 +26,7 @@ module Message
 
 
   def ship_hit_message
-    "Ship hit!"
+    puts "Ship hit!"
   end
 
 

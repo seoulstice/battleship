@@ -30,10 +30,10 @@ include Message
 
   end
 
-  def start_game(x, y)
-    Gameboard.new.set_board(x, y)
-
-  end
+  # def start_game(x, y)
+  #   Gameboard.new.set_board(x, y)
+  #
+  # end
 
 end
 

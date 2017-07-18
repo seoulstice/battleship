@@ -10,16 +10,23 @@ class Gameboard
     }
   end
 
-  def validate_small_ship
-
+  def hit(grid)
+    @game_board[grid] = "hit"
   end
+
+  def miss(grid)
+    @game_board[grid] = "miss"
+  end
+
+
+
   # def create_computer_board(ship1, ship2)
   #
   # end
 
 
-  # def set_board(x, y)
-  #   create_board[x] = "full"
+  # def hit(x, y)
+  #   create_board[x] = "hit"
   #   create_board[y] = "full"
   #   binding.pry
   # end

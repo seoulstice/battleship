@@ -1,5 +1,6 @@
 require './lib/messages'
 require './lib/gameboard'
+require './lib/computer'
 require 'pry'
 
 class Battleship
@@ -30,10 +31,11 @@ include Message
 
   end
 
-  # def start_game(x, y)
-  #   Gameboard.new.set_board(x, y)
-  #
-  # end
+  def start_game
+    start_game_message
+    @computer = Computer.new
+
+  end
 
 end
 

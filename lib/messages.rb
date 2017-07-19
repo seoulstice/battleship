@@ -13,6 +13,10 @@ module Message
           ----------------------"
   end
 
+  def start_game_message
+    puts "Please wait a moment while the computer places its ships."
+  end
+
   def ship_placement_message
     puts "I have laid out my ships on the grid.
     You now need to layout your two ships.

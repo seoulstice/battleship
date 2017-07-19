@@ -4,10 +4,9 @@ class Gameboard
 
   def initialize
     @game_board = { "A1" => "empty", "A2" => "empty", "A3" => "empty", "A4" => "empty",
-                      "B1" => "empty", "B2" => "empty", "B3" => "empty", "B4" => "empty",
-                      "C1" => "empty", "C2" => "empty", "C3" => "empty", "C4" => "empty",
-                      "D1" => "empty", "D2" => "empty", "D3" => "empty", "D4" => "empty"
-    }
+                    "B1" => "empty", "B2" => "empty", "B3" => "empty", "B4" => "empty",
+                    "C1" => "empty", "C2" => "empty", "C3" => "empty", "C4" => "empty",
+                    "D1" => "empty", "D2" => "empty", "D3" => "empty", "D4" => "empty"}
   end
 
   def hit(grid)
@@ -17,6 +16,14 @@ class Gameboard
   def miss(grid)
     @game_board[grid] = "miss"
   end
+
+  def place_two_unit_ship(space1, space2)
+    game_board[space1] = "occupied"
+    game_board[space2] = "occupied"
+  end
+
+
+
 
 
 

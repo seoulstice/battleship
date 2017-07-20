@@ -17,10 +17,29 @@ class Gameboard
     @game_board[grid] = "miss"
   end
 
-  def place_two_unit_ship(space1, space2)
+  def place_frigate(space1, space2)
+    # checks if ship placement exists on the board
+    if game_board[space1] == nil || game_board[space2] == nil
+      return false
+    end
+    # checks if ship is longer than 2 spaces horizontally
+    if space1[1].to_i - space2[1].to_i > 1 || space2[1].to_i - space1[1].to_i > 1
+      return false
+    end
+    # check if ship is longer than 2 spaces vertically
+    if space1[0].ord.to_i - space2[0].ord.to_i > 1 || space2[0].ord - space1[0].ord > 1
+      return false
+    end
+
+    # if space1[1].to_i -
+
+
     game_board[space1] = "occupied"
     game_board[space2] = "occupied"
   end
+
+
+
 
 
 
@@ -37,7 +56,6 @@ class Gameboard
   #   create_board[y] = "full"
   #   binding.pry
   # end
-
 
 
 end

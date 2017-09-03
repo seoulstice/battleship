@@ -1,4 +1,5 @@
-module Message
+
+module Messages
 
   def start_message
     puts "\n
@@ -11,6 +12,9 @@ module Message
     puts "\n
           How to Play Battleship
           ----------------------"
+  end
+  def invalid_input_message
+    puts "Invalid input, try again."
   end
 
   def start_game_message
@@ -27,12 +31,8 @@ module Message
     Enter the squares for the two-unit ship:"
   end
 
-
-
   def ship_hit_message
     puts "Ship hit!"
   end
-
-
 
 end

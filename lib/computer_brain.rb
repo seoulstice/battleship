@@ -39,8 +39,7 @@ class ComputerAI
 
   def create_destroyer
     key = first_coordinate
-    destroyer << key
-    destroyer << second_coordinate(key)
+    destroyer << key << second_coordinate(key)
   end
 
   def create_submarine

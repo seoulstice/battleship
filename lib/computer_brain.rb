@@ -1,26 +1,34 @@
-require './lib/ship_placement'
-require './lib/computer_board'
-require 'set'
+require './lib/ship_coordinates'
+require './lib/board'
 require 'pry'
 
-class ComputerBrain
-  include ShipPlacement
+class ComputerAI
+  include ShipCoordinates
   attr_accessor :board
   attr_reader :destroyer,
               :submarine
   def initialize
-    @board = ComputerBoard.new
+    @board = Board.new
     @destroyer = []
     @submarine = []
   end
 
-  def place_ships
+  def create_ships
     create_destroyer
     create_submarine
     if validate_correct_ship_placement == false
       destroyer.clear
       submarine.clear
-      self.place_ships
+      self.create_ships
+    end
+  end
+
+  def place_ships_on_board
+    submarine.each do |coordinate|
+      @board.board[coordinate][:occupied] = true
+    end
+    destroyer.each do |coordinate|
+      @board.board[coordinate][:occupied] = true
     end
   end
 
@@ -42,20 +50,18 @@ class ComputerBrain
     key << first_tile << second_tile
     submarine << first_tile
     submarine << second_tile
-    submarine << board_third_space[key.sort].sample
+    submarine << ship_third_space[key.sort].sample
   end
 
   def first_coordinate
-    first = board_first_space.sample
+    first = ship_first_space.sample
   end
 
   def second_coordinate(key)
-    board_second_space[key].sample
+    ship_second_space[key].sample
   end
 
   def third_coord(key)
-    board_third_space[key].sample
+    ship_third_space[key].sample
   end
 end
-
-cb = ComputerBrain.new

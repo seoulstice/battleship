@@ -1,5 +1,5 @@
 
-class ComputerBoard
+class Board
   attr_accessor :board
 
   def initialize

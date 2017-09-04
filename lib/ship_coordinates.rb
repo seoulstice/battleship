@@ -1,14 +1,13 @@
+module ShipCoordinates
 
-module ShipPlacement
-
-  def board_first_space
+  def ship_first_space
       ["A1", "A2", "A3", "A4",
       "B1", "B2", "B3", "B4",
       "C1", "C2", "C3", "C4",
       "D1", "D2", "D3", "D4"]
   end
 
-  def board_second_space
+  def ship_second_space
       {"A1" => ["A2", "B1"], "A2" => ["A1", "A3", "B2"],
       "A3" => ["A2", "A4", "B3"], "A4" => ["A3", "B4"],
       "B1" => ["A1", "B2", "C1"], "B2" => ["A2", "B1", "B3", "C2"],
@@ -20,7 +19,7 @@ module ShipPlacement
       }
   end
 
-  def board_third_space
+  def ship_third_space
       {["A1", "A2"] => ["A3"], ["A2", "A3"] => ["A1", "A4"],
       ["A3", "A4"] => ["A2"], ["A1", "B1"] => ["C1"],
       ["A2", "B2"] => ["C2"], ["A3", "B3"] => ["C3"],
@@ -35,6 +34,4 @@ module ShipPlacement
       ["D2", "D3"] => ["D1", "D4"], ["D3", "D4"] => ["D2"]
       }
   end
-
-
 end

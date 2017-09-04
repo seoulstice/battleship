@@ -42,7 +42,6 @@ module Messages
 
   def destroyer_successful_placement
     "You've successfully placed your destroyer on the board."
-
   end
 
   def submarine_first_coordinate_message

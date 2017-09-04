@@ -1,4 +1,3 @@
-
 module Messages
 
   def start_message

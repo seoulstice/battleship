@@ -16,7 +16,7 @@ class ComputerAI
   def create_ships
     create_destroyer
     create_submarine
-    if validate_correct_ship_placement == false
+    if ship_placement_validation == false
       destroyer.clear
       submarine.clear
       self.create_ships
@@ -32,7 +32,7 @@ class ComputerAI
     end
   end
 
-  def validate_correct_ship_placement
+  def ship_placement_validation
     comparison = destroyer & submarine
     comparison.empty?
   end
@@ -51,14 +51,14 @@ class ComputerAI
   end
 
   def first_coordinate
-    first = ship_first_space.sample
+    ship_first_space.sample
   end
 
   def second_coordinate(key)
     ship_second_space[key].sample
   end
 
-  def third_coord(key)
+  def third_coordinate(key)
     ship_third_space[key].sample
   end
 end

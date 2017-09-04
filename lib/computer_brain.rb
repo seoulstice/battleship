@@ -45,11 +45,9 @@ class ComputerAI
 
   def create_submarine
     key = []
-    first_tile = first_coordinate
-    second_tile = second_coordinate(first_tile)
+    submarine << (first_tile = first_coordinate)
+    submarine << (second_tile = second_coordinate(first_tile))
     key << first_tile << second_tile
-    submarine << first_tile
-    submarine << second_tile
     submarine << ship_third_space[key.sort].sample
   end
 

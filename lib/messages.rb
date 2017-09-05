@@ -40,8 +40,25 @@ module Messages
     "Enter the second coordinate for the destroyer:"
   end
 
-  def destroyer_successful_placement
-    "You've successfully placed your destroyer on the board."
+  def destroyer_successful_placement_message
+    "You've successfully placed your destroyer on the board.\n\n"
+  end
+
+  def destroyer_unsuccessful_placement_message
+    "Ships cannot be overlapping, reposition destroyer:"
+  end
+
+  def successful_ship_placement_message
+    "     You've successfully placed your ships!\n
+     Prepare for a game of BATTLESHIP!!!\n\n"
+  end
+
+  def submarine_coordinate_display_message
+    "Your submarine is currently placed on spaces: #{self.submarine[0]}, #{self.submarine[1]}, #{self.submarine[2]}\n\n"
+  end
+
+  def submarine_successful_placement_message
+    "You've successfully placed your submarine on the board.\n\n"
   end
 
   def submarine_first_coordinate_message

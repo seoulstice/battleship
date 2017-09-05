@@ -6,9 +6,12 @@ class ComputerAI
   include ShipCoordinates
   attr_accessor :board
   attr_reader :destroyer,
-              :submarine
+              :submarine,
+              :target_board
   def initialize
     @board = Board.new
+    @target_board = Board.new
+    @shot_sequence = []
     @destroyer = []
     @submarine = []
   end
@@ -21,6 +24,30 @@ class ComputerAI
       submarine.clear
       self.create_ships
     end
+  end
+
+  def choose_target
+    @target_board.board.keys.sample
+  end
+
+  def confirm_target(target)
+    if ship_first_space.include?(target) && @target_board.board[target][:shot_at] = false
+      true
+    else
+      false
+    end
+  end
+
+  def fire_on_target
+    target = choose_target
+    confirm_target(target)
+    
+
+  end
+
+
+
+
   end
 
   def place_ships_on_board

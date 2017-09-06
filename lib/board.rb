@@ -28,7 +28,8 @@ class Board
     row_c         = ["C", "  #{@board["C1"][:symbol]} ", "  #{@board["C2"][:symbol]}  ", " #{@board["C3"][:symbol]}  ", " #{@board["C4"][:symbol]}  "].join
     row_d         = ["D", "  #{@board["D1"][:symbol]} ", "  #{@board["D2"][:symbol]}  ", " #{@board["D3"][:symbol]}  ", " #{@board["D4"][:symbol]}  "].join
     bottom_border = "==================="
-    print "\n#{top_border}\n#{numbers}\n#{row_a}\n#{row_b}\n#{row_c}\n#{row_d}\n#{bottom_border}\n\n"
+    # board_key     = "#{\u1F95A} goose egg #{\u1F30A} : empty ocean "
+    print "\n#{top_border}\n#{numbers}\n#{row_a}\n#{row_b}\n#{row_c}\n#{row_d}\n#{bottom_border}\n#{board_key}\n\n"
   end
 
 end

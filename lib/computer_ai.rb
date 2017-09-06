@@ -15,8 +15,10 @@ class ComputerAI
               :rounds_on_target
   def initialize
     @board = Board.new
-    @destroyer = []
-    @battleship = []
+    @player_destroyer = []
+    @player_battleship = []
+    @computer_destroyer = []
+    @computer_battleship = []
     @rounds_on_target = []
   end
 

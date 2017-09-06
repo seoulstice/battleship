@@ -1,38 +1,43 @@
-require './lib/player'
-require './lib/computer_ai'
+require './lib/game_sequence'
 require './lib/messages'
 class Battleship
   include Messages
 
   def initialize
-    @shot_count = 0
+    game_start
   end
 
-  def game_sequence
-
+  def game_start
+    puts start_message
+    player_input = gets.chomp
+    if player_input == "p" || player_input == "play"
+      puts start_game
+    elsif player_input == "i" || player_input == "instructions"
+      #instructions message need to write
+      game_start
+    elsif player_input == "q" || player_input =="quit"
+      quit_game
+    else
+      puts invalid_input_message
+      game_start
+    end
   end
 
-  def placement_of_ships(player, computer)
-    computer.create_ships
-    computer.place_ships_on_board
-    puts computer_ship_placement_complete_message
-    player.create_ships
+  def start_game
+    game = GameSequence.new
   end
 
-  def shot_sequence(player, computer)
-    player.shot_sequence
-    #add 1 to player_shot_counter
-    if #check if player hit/won
-      #win message
-      #shot count to win
-      #time to win
-
-    computer.shot_sequence
-    #check if computer hit/won
-    #add 1 to computer shot counter
-
-
+  def quit_game
+    # quit message
+    # exit
   end
+
+end
+
+
+
+
 
   # Batteship class should keep score
-end
+
+battleship = Battleship.new

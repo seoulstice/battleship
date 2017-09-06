@@ -30,6 +30,15 @@ class Player
     @submarine3 = ""
   end
 
+  def place_ships_on_board
+    submarine.each do |coordinate|
+      @board.board[coordinate][:occupied] = true
+    end
+    destroyer.each do |coordinate|
+      @board.board[coordinate][:occupied] = true
+    end
+  end
+
   def ship_placement_validation
     comparison = destroyer & submarine
     comparison.empty?

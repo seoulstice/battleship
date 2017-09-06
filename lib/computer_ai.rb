@@ -38,7 +38,6 @@ class ComputerAI
   def determine_target_previously_shot_at(target, player_board)
     if player_board.board[target][:shot_at] = true
       true
-      binding.pry
     else
       false
     end
@@ -56,17 +55,24 @@ class ComputerAI
     target = choose_target(player_board)
     if determine_target_previously_shot_at(target, player_board) == true
       self.firing_sequence(player_board)
-    elsif determine_target_previously_shot_at(target, player_board) == false && determine_target_occupation_status(target, player_board) == true
-      player_board.board[target][:symbol] = "H"
-      player_board.board[target][:shot_at] = true
-      @shot_count += 1
-    else determine_target_previously_shot_at(target, player_board) == false &&  determine_target_occupation_status(target, player_board) == false
-      player_board.board[target][:symbol] = "M"
-      player_board.board[target][:shot_at] = true
-      @shot_count += 1
-    end
+    else determine_target_previously_shot_at?(target, player_board) == false
+      if determine_target_occupation_status(target, player_board) == true
+        player_board.board[target][:symbol] = "H"
+        player_board.board[target][:shot_at] = true
+        # message to announce computer hit ship
+      else determine_target_occupation_status(target, player_board) == false
+        player_board.board[target][:symbol] = "M"
+        player_board.board[target][:shot_at] = true
+      end
   end
 
+  # NEED? method to determine which ship is hit
+
+  # NEED method to determine when ship is sunk
+
+  # NEED method to determine how many successfull hits
+
+  # NEED if 5 successful hits win?
 
 
   def confirm_hit_or_miss(target)

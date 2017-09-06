@@ -27,7 +27,7 @@ module Messages
     "I have laid out my ships on the grid.
     You now need to layout your two ships.
     The destroyer is two units long and the
-    submarine is three units long.
+    battleship is three units long.
     The grid has A1 at the top left and D4 at the bottom right."
   end
 
@@ -53,34 +53,32 @@ module Messages
      Prepare for a game of BATTLESHIP!!!\n\n"
   end
 
-  def submarine_coordinate_display_message
-    "Your submarine is currently placed on spaces: #{self.submarine[0]}, #{self.submarine[1]}, #{self.submarine[2]}\n\n"
+  def battleship_coordinate_display_message
+    "Your battleship is currently placed on spaces: #{self.battleship[0]}, #{self.battleship[1]}, #{self.battleship[2]}\n\n"
   end
 
-  def submarine_successful_placement_message
-    "You've successfully placed your submarine on the board.\n\n"
+  def battleship_successful_placement_message
+    "You've successfully placed your battleship on the board.\n\n"
   end
 
-  def submarine_first_coordinate_message
-    "Enter the first coordinate for the submarine:"
+  def battleship_first_coordinate_message
+    "Enter the first coordinate for the battleship:"
   end
 
-  def submarine_second_coordinate_message
-    "Enter the second coordinate for the submarine:"
+  def battleship_second_coordinate_message
+    "Enter the second coordinate for the battleship:"
   end
 
-  def submarine_third_coordinate_message
-    "Enter the third coordinate for the submarine:"
+  def battleship_third_coordinate_message
+    "Enter the third coordinate for the battleship:"
   end
 
-
-  def display_second_coordinate_possibilities(key)
-    "Choose one of the following coordinates: \n
-          #{ship_second_space[key]}"
+  def computer_ship_hit_message
+    "The computer has hit your ship!"
   end
 
-  def ship_hit_message
-    "Ship hit!"
+  def computer_ship_miss_message
+    "The computer has missed!"
   end
 
 end

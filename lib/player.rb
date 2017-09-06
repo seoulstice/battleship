@@ -10,24 +10,21 @@ class Player
                 :destroyer,
                 :destroyer1,
                 :destroyer2,
-                :submarine1,
-                :submarine2,
-                :submarine3,
-                :submarine
+                :battleship,
+                :battleship1,
+                :battleship2,
+                :battleship3
+
 
   def initialize
     @board = Board.new
-    @board_selection = ["A1", "A2", "A3", "A4",
-                        "B1", "B2", "B3", "B4",
-                        "C1", "C2", "C3", "C4",
-                        "D1", "D2", "D3", "D4"]
     @destroyer = []
-    @submarine = []
+    @battleship = []
     @destroyer1 = ""
     @destroyer2 = ""
-    @submarine1 = ""
-    @submarine2 = ""
-    @submarine3 = ""
+    @battleship1 = ""
+    @battleship2 = ""
+    @battleship3 = ""
   end
 
   def place_ships_on_board
@@ -45,8 +42,8 @@ class Player
   end
 
   def create_ships
-    create_submarine
-    puts submarine_coordinate_display_message
+    create_battleship
+    puts battleship_coordinate_display_message
     create_destroyer
     until ship_placement_validation == true
       puts destroyer_unsuccessful_placement_message
@@ -85,43 +82,43 @@ class Player
     end
   end
 
-  def create_submarine
-    make_first_submarine_coordinates
-    make_second_submarine_coordinates
-    make_third_submarine_coordinates
+  def create_battleship
+    make_first_battleship_coordinates
+    make_second_battleship_coordinates
+    make_third_battleship_coordinates
   end
 
-  def make_first_submarine_coordinates
-    puts submarine_first_coordinate_message
-    @submarine1 = user_input
-    if first_coordinate_validity(submarine1) == true
-      submarine << submarine1
+  def make_first_battleship_coordinates
+    puts battleship_first_coordinate_message
+    @battleship1 = user_input
+    if first_coordinate_validity(battleship1) == true
+      battleship << battleship1
     else
       puts invalid_input_message
-      self.make_first_submarine_coordinates
+      self.make_first_battleship_coordinates
     end
   end
 
-  def make_second_submarine_coordinates
-    puts submarine_second_coordinate_message
-    @submarine2 = user_input
-    if second_coordinate_validity(@submarine1, @submarine2) == true
-      submarine << submarine2
+  def make_second_battleship_coordinates
+    puts battleship_second_coordinate_message
+    @battleship2 = user_input
+    if second_coordinate_validity(@battleship1, @battleship2) == true
+      battleship << battleship2
     else
       puts invalid_input_message
-      self.make_second_submarine_coordinates
+      self.make_second_battleship_coordinates
     end
   end
 
-  def make_third_submarine_coordinates
-    puts submarine_third_coordinate_message
-    @submarine3 = user_input
-    if third_coordinate_validity(@submarine1, @submarine2, @submarine3) == true
-      submarine << submarine3
-      puts submarine_successful_placement_message
+  def make_third_battleship_coordinates
+    puts battleship_third_coordinate_message
+    @battleship3 = user_input
+    if third_coordinate_validity(@battleship1, @battleship2, @battleship3) == true
+      battleship << battleship3
+      puts battleship_successful_placement_message
     else
       puts invalid_input_message
-      self.make_third_submarine_coordinates
+      self.make_third_battleship_coordinates
     end
   end
 
@@ -144,7 +141,7 @@ class Player
   end
 
   def ship_placement_validation
-    comparison = destroyer & submarine
+    comparison = destroyer & battleship
     comparison.empty?
   end
 end

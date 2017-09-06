@@ -45,16 +45,16 @@ binding.pry
 
   def test_brain_can_create_submarine
     brain = ComputerAI.new
-    brain.create_submarine
+    brain.create_battleship
 
-    assert_equal 3, brain.submarine.length
+    assert_equal 3, brain.battleship.length
   end
 
   def test_brain_can_validate_both_ships_do_not_overlap
     brain = ComputerAI.new
     brain.create_destroyer
-    brain.create_submarine
-    combination = brain.destroyer & brain.submarine
+    brain.create_battleship
+    combination = brain.destroyer & brain.battleship
 
     if combination.empty?
       assert brain.ship_placement_validation
@@ -69,7 +69,7 @@ binding.pry
 
     assert brain.ship_placement_validation
     assert_equal 2, brain.destroyer.length
-    assert_equal 3, brain.submarine.length
+    assert_equal 3, brain.battleship.length
   end
 
   def test_brain_can_choose_target

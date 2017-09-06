@@ -7,13 +7,13 @@ class ComputerAI
   include ShipCoordinates
   attr_accessor :board
   attr_reader :destroyer,
-              :submarine,
+              :battleship,
               :shot_count,
               :rounds_on_target
   def initialize
     @board = Board.new
     @destroyer = []
-    @submarine = []
+    @battleship = []
     @rounds_on_target = []
     @shot_count = 0
   end
@@ -24,10 +24,10 @@ class ComputerAI
 
   def create_ships
     create_destroyer
-    create_submarine
+    create_battleship
     if ship_placement_validation == false
       destroyer.clear
-      submarine.clear
+      battleship.clear
       self.create_ships
     end
   end
@@ -60,12 +60,12 @@ class ComputerAI
       if determine_target_occupation_status(target, player_board) == true
         player_board.board[target][:symbol] = "H"
         player_board.board[target][:shot_at] = true
-        # message to announce computer hit ship
         @rounds_on_target << target
+        puts computer_ship_hit_message
       elsif determine_target_occupation_status(target, player_board) == false
         player_board.board[target][:symbol] = "M"
         player_board.board[target][:shot_at] = true
-        "miss"
+        puts computer_ship_miss_message
       end
     end
   end
@@ -88,7 +88,7 @@ class ComputerAI
   end
 
   def place_ships_on_board
-    submarine.each do |coordinate|
+    battleship.each do |coordinate|
       @board.board[coordinate][:occupied] = true
     end
     destroyer.each do |coordinate|
@@ -97,7 +97,7 @@ class ComputerAI
   end
 
   def ship_placement_validation
-    comparison = destroyer & submarine
+    comparison = destroyer & battleship
     comparison.empty?
   end
 
@@ -106,12 +106,12 @@ class ComputerAI
     destroyer << key << second_coordinate(key)
   end
 
-  def create_submarine
+  def create_battleship
     key = []
-    submarine << (first_tile = first_coordinate)
-    submarine << (second_tile = second_coordinate(first_tile))
+    battleship << (first_tile = first_coordinate)
+    battleship << (second_tile = second_coordinate(first_tile))
     key << first_tile << second_tile
-    submarine << ship_third_space[key.sort].sample
+    battleship << ship_third_space[key.sort].sample
   end
 
   def first_coordinate

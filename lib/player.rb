@@ -5,6 +5,7 @@ require './lib/computer_ai'
 
 class Player
   include Messages
+  include ShipCoordinates
   attr_accessor :board,
                 :board_selection,
                 :destroyer,
@@ -13,8 +14,8 @@ class Player
                 :battleship,
                 :battleship1,
                 :battleship2,
-                :battleship3
-
+                :battleship3,
+                :rounds_on_target
 
   def initialize
     @board = Board.new
@@ -25,10 +26,11 @@ class Player
     @battleship1 = ""
     @battleship2 = ""
     @battleship3 = ""
+    @rounds_on_target = []
   end
 
   def place_ships_on_board
-    submarine.each do |coordinate|
+    battleship.each do |coordinate|
       @board.board[coordinate][:occupied] = true
     end
     destroyer.each do |coordinate|
@@ -143,5 +145,53 @@ class Player
   def ship_placement_validation
     comparison = destroyer & battleship
     comparison.empty?
+  end
+
+  def determine_if_user_input_is_valid(input, computer_board)
+    if computer_board.board.keys.include?(input)
+      true
+    else
+      false
+    end
+  end
+
+  def determine_target_previously_shot_at(input, computer_board)
+    if computer_board.board[input][:shot_at] == true
+      true
+    else
+      false
+    end
+  end
+
+  def determine_target_occupation_status(target, computer_board)
+    if computer_board.board[target][:occupied] == true
+      true
+    else
+      false
+    end
+  end
+
+  def firing_sequence(computer_board)
+    puts player_shot_prompt_message
+    target = user_input
+    if determine_if_user_input_is_valid(target, computer_board) == true
+      if determine_target_previously_shot_at(target, computer_board) == false
+        if determine_target_occupation_status(target, computer_board) == true
+          computer_board.board[target][:symbol] = "H"
+          computer_board.board[target][:shot_at] = true
+          @rounds_on_target << target
+          # player hit message
+        elsif determine_target_occupation_status(target, computer_board) == false
+          computer_board.board[target][:symbol] = "M"
+          computer_board.board[target][:shot_at] = true
+          # player miss message
+        end
+      elsif determine_target_previously_shot_at(target, computer_board) == false
+        puts invalid_player_invalid_target_message
+        self.player_firing_sequence(computer_board)
+      end
+    elsif determine_if_user_input_is_valid(target, computer_board) == false
+      self.player_firing_sequence
+    end
   end
 end

@@ -81,4 +81,20 @@ module Messages
     "The computer has missed!"
   end
 
+  def player_shot_prompt_message
+    "It is now time for you choose\n
+    your valid target coordinate:"
+  end
+
+  def invalid_player_invalid_target_message
+    "Invalid target, player cannot target\n
+    a previously targeted grid square."
+  end
+
+  def invalid_player_coord_placement_message
+     "Invalid Coordinate!\n
+     Valid coordinates range from\n
+     A1-A4, B1-B4, C1-C4, and D1-D4."
+  end
+
 end

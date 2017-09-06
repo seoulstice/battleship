@@ -1,10 +1,12 @@
 require './lib/ship_coordinates'
 require './lib/board'
 require './lib/player'
+require './lib/messages'
 require 'pry'
 
 class ComputerAI
   include ShipCoordinates
+  include Messages
   attr_accessor :board
   attr_reader :destroyer,
               :battleship,
@@ -67,6 +69,7 @@ class ComputerAI
         player_board.board[target][:shot_at] = true
         puts computer_ship_miss_message
       end
+
     end
   end
 

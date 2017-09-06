@@ -30,8 +30,7 @@ binding.pry
     assert_equal [], player.battleship
     assert_equal 0, player.battleship.length
   end
-
-
+  
   def test_player_can_place_once
     skip
   end

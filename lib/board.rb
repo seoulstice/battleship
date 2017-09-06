@@ -30,5 +30,5 @@ class Board
     bottom_border = "==================="
     print "\n#{top_border}\n#{numbers}\n#{row_a}\n#{row_b}\n#{row_c}\n#{row_d}\n#{bottom_border}\n\n"
   end
-  
+
 end

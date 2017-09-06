@@ -1,27 +1,23 @@
-require './lib/ship_coordinates'
 require './lib/board'
 require './lib/player'
+require './lib/ship_coordinates'
 require './lib/messages'
+require './lib/validations'
 require 'pry'
 
 class ComputerAI
   include ShipCoordinates
   include Messages
+  include Validations
   attr_accessor :board
   attr_reader :destroyer,
               :battleship,
-              :shot_count,
               :rounds_on_target
   def initialize
     @board = Board.new
     @destroyer = []
     @battleship = []
     @rounds_on_target = []
-    @shot_count = 0
-  end
-
-  def pull_ship_placement_from_player
-
   end
 
   def create_ships
@@ -36,22 +32,6 @@ class ComputerAI
 
   def choose_target(player_board)
     player_board.board.keys.sample
-  end
-
-  def determine_target_previously_shot_at(target, player_board)
-    if player_board.board[target][:shot_at] == true
-      true
-    else
-      false
-    end
-  end
-
-  def determine_target_occupation_status(target, player_board)
-    if player_board.board[target][:occupied] == true
-      true
-    else
-      false
-    end
   end
 
   def firing_sequence(player_board)
@@ -97,11 +77,6 @@ class ComputerAI
     destroyer.each do |coordinate|
       @board.board[coordinate][:occupied] = true
     end
-  end
-
-  def ship_placement_validation
-    comparison = destroyer & battleship
-    comparison.empty?
   end
 
   def create_destroyer

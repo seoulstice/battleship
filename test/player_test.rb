@@ -24,11 +24,11 @@ binding.pry
     assert_equal 0, player.destroyer.length
   end
 
-  def test_player_has_empty_submarine_by_default
+  def test_player_has_empty_battleship_by_default
     player = Player.new
 
-    assert_equal [], player.submarine
-    assert_equal 0, player.submarine.length
+    assert_equal [], player.battleship
+    assert_equal 0, player.battleship.length
   end
 
 

@@ -82,7 +82,7 @@ module Messages
   end
 
   def player_shot_prompt_message
-    "It is now time for you choose\n
+    "It is now time for you choose
     your valid target coordinate:"
   end
 

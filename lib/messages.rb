@@ -16,7 +16,7 @@ module Messages
   end
 
   def invalid_input_message
-    "Invalid input, try again."
+    "Invalid input, try again.\n\n"
   end
 
   def start_game_message

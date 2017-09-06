@@ -1,5 +1,6 @@
 require './lib/ship_coordinates'
 require './lib/board'
+require './lib/player'
 require 'pry'
 
 class ComputerAI
@@ -7,13 +8,17 @@ class ComputerAI
   attr_accessor :board
   attr_reader :destroyer,
               :submarine,
-              :target_board
+              :shot_count
   def initialize
     @board = Board.new
-    @target_board = Board.new
-    @shot_sequence = []
     @destroyer = []
     @submarine = []
+    @rounds_on_target = []
+    @shot_count = 0
+  end
+
+  def pull_ship_placement_from_player
+
   end
 
   def create_ships
@@ -26,28 +31,50 @@ class ComputerAI
     end
   end
 
-  def choose_target
-    @target_board.board.keys.sample
+  def choose_target(player_board)
+    player_board.board.keys.sample
   end
 
-  def confirm_target(target)
-    if ship_first_space.include?(target) && @target_board.board[target][:shot_at] = false
+  def determine_target_previously_shot_at(target, player_board)
+    if player_board.board[target][:shot_at] = true
+      true
+      binding.pry
+    else
+      false
+    end
+  end
+
+  def determine_target_occupation_status(target, player_board)
+    if player_board.board[target][:occupied] = true
       true
     else
       false
     end
   end
 
-  def fire_on_target
-    target = choose_target
-    confirm_target(target)
-    
-
+  def firing_sequence(player_board)
+    target = choose_target(player_board)
+    if determine_target_previously_shot_at(target, player_board) == true
+      self.firing_sequence(player_board)
+    elsif determine_target_previously_shot_at(target, player_board) == false && determine_target_occupation_status(target, player_board) == true
+      player_board.board[target][:symbol] = "H"
+      player_board.board[target][:shot_at] = true
+      @shot_count += 1
+    else determine_target_previously_shot_at(target, player_board) == false &&  determine_target_occupation_status(target, player_board) == false
+      player_board.board[target][:symbol] = "M"
+      player_board.board[target][:shot_at] = true
+      @shot_count += 1
+    end
   end
 
 
 
-
+  def confirm_hit_or_miss(target)
+    if @target_board.board[target][:occupied] = true
+      @target_board.board[target][:symbol] = "H"
+    else
+      @target_board.board[target][:symbol] = "H"
+    end
   end
 
   def place_ships_on_board

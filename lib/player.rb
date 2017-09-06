@@ -1,6 +1,7 @@
 require './lib/board'
 require './lib/ship_coordinates'
 require './lib/messages'
+require './lib/computer_ai'
 
 class Player
   include Messages
@@ -43,8 +44,8 @@ class Player
       destroyer.clear
       self.create_destroyer
     end
-    puts destroyer_successful_placement_message
-    puts successful_ship_placement_messages
+    puts destroyer_successful_placement_message +
+        successful_ship_placement_message
   end
 
   def create_destroyer
@@ -97,7 +98,6 @@ class Player
     @submarine2 = user_input
     if second_coordinate_validity(@submarine1, @submarine2) == true
       submarine << submarine2
-
     else
       puts invalid_input_message
       self.make_second_submarine_coordinates
@@ -109,7 +109,6 @@ class Player
     @submarine3 = user_input
     if third_coordinate_validity(@submarine1, @submarine2, @submarine3) == true
       submarine << submarine3
-
       puts submarine_successful_placement_message
     else
       puts invalid_input_message

@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/emoji'
 require './lib/computer_ai'
+require './lib/player'
 require './lib/ship_coordinates'
 
 class ComputerAITest < Minitest::Test
@@ -71,7 +72,22 @@ binding.pry
     assert_equal 3, brain.submarine.length
   end
 
-  def test
+  def test_brain_can_choose_target
+    brain = ComputerAI.new
+    player = Player.new
+    random_coord = brain.choose_target(player.board)
 
+    assert player.board.board.keys.include?(random_coord)
   end
+
+  def test_brain_can_fire
+    skip
+    brain = ComputerAI.new
+    player = Player.new
+    brain.fire_on_target(player.board)
+
+    assert player.board.board.values[:shot_at].include?(true)
+  end
+
+
 end

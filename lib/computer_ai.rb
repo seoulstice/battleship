@@ -8,7 +8,8 @@ class ComputerAI
   attr_accessor :board
   attr_reader :destroyer,
               :submarine,
-              :shot_count
+              :shot_count,
+              :rounds_on_target
   def initialize
     @board = Board.new
     @destroyer = []
@@ -36,7 +37,7 @@ class ComputerAI
   end
 
   def determine_target_previously_shot_at(target, player_board)
-    if player_board.board[target][:shot_at] = true
+    if player_board.board[target][:shot_at] == true
       true
     else
       false
@@ -44,7 +45,7 @@ class ComputerAI
   end
 
   def determine_target_occupation_status(target, player_board)
-    if player_board.board[target][:occupied] = true
+    if player_board.board[target][:occupied] == true
       true
     else
       false
@@ -55,15 +56,18 @@ class ComputerAI
     target = choose_target(player_board)
     if determine_target_previously_shot_at(target, player_board) == true
       self.firing_sequence(player_board)
-    else determine_target_previously_shot_at?(target, player_board) == false
+    elsif determine_target_previously_shot_at(target, player_board) == false
       if determine_target_occupation_status(target, player_board) == true
         player_board.board[target][:symbol] = "H"
         player_board.board[target][:shot_at] = true
         # message to announce computer hit ship
-      else determine_target_occupation_status(target, player_board) == false
+        @rounds_on_target << target
+      elsif determine_target_occupation_status(target, player_board) == false
         player_board.board[target][:symbol] = "M"
         player_board.board[target][:shot_at] = true
+        "miss"
       end
+    end
   end
 
   # NEED? method to determine which ship is hit

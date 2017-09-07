@@ -9,4 +9,4 @@ require './lib/game_menu'
 
 
 
-game = GameMenu.new
+game = GameMenu.new.game_start

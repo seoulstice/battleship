@@ -24,9 +24,9 @@ class GameSequence
     @computer = ComputerAI.new
     @player = Player.new
     @board = Board.new
+    @start = Time.now
     @player_shot_count = 0
     @computer_shot_count = 0
-    @start = Time.now
     game_sequence
   end
 

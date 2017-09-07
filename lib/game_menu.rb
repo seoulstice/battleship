@@ -33,5 +33,3 @@ class GameMenu
     exit
   end
 end
-
-battleship = Battleship.new

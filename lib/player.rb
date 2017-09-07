@@ -46,8 +46,8 @@ class Player
       destroyer.clear
       self.create_destroyer
     end
-    destroyer_successful_placement_message +
-        successful_ship_placement_message
+    destroyer_successful_placement_message
+    successful_ship_placement_message
   end
 
   def create_destroyer
@@ -127,18 +127,18 @@ class Player
     if determine_if_user_input_is_valid(target, computer_board) == true
       if determine_target_previously_shot_at(target, computer_board) == false
         if determine_target_occupation_status(target, computer_board) == true
-          computer_board.board[target][:symbol] = "H"
+          computer_board.board[target][:symbol] = "\u{1F4A5}"
           computer_board.board[target][:shot_at] = true
           @rounds_on_target << target
-          # player hit message
+          player_hit_ship_message
         elsif determine_target_occupation_status(target, computer_board) == false
-          computer_board.board[target][:symbol] = "M"
+          computer_board.board[target][:symbol] = "\u{2716}"
           computer_board.board[target][:shot_at] = true
-          # player miss message
+          player_miss_message
         end
-      elsif determine_target_previously_shot_at(target, computer_board) == false
+      elsif determine_target_previously_shot_at(target, computer_board) == true
         invalid_player_invalid_target_message
-        self.player_firing_sequence(computer_board)
+        self.firing_sequence(computer_board)
       end
     elsif determine_if_user_input_is_valid(target, computer_board) == false
       # invalid input message

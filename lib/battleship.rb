@@ -1,5 +1,6 @@
 require './lib/game_sequence'
 require './lib/messages'
+require 'colorize'
 class Battleship
   include Messages
 
@@ -11,14 +12,14 @@ class Battleship
     puts start_message
     player_input = gets.chomp
     if player_input == "p" || player_input == "play"
-      puts start_game
+      start_game
     elsif player_input == "i" || player_input == "instructions"
-      #instructions message need to write
+      instruction_message
       game_start
     elsif player_input == "q" || player_input =="quit"
       quit_game
     else
-      puts invalid_input_message
+      invalid_input_message
       game_start
     end
   end
@@ -28,16 +29,10 @@ class Battleship
   end
 
   def quit_game
-    # quit message
-    # exit
+    quit_message
+    exit
   end
 
 end
-
-
-
-
-
-  # Batteship class should keep score
 
 battleship = Battleship.new

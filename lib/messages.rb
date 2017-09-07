@@ -1,15 +1,14 @@
 require './lib/ship_coordinates'
+require './lib/board'
 module Messages
   include ShipCoordinates
 
   def start_message
-    puts "Welcome to BATTLESHIP
-
-    Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    puts "Welcome to BATTLESHIP\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
 
   def instruction_message
-    puts "How to Play Battleship\n----------------------"
+    puts "How to play BATTLESHIP :\nBATTLESHIP is an intense game of luck and skill. The game is played on two separate 4x4 grids with rows assigned from A..D and columns assigned from 1..4.  After both players place their destroyer(2-unit ship) and battleship(3-unit ship) on their own respective boards, the main game sequence begins.  During the main game phase, players take turns firing on each other.  A winner is determined when all opponent ships have been hit and sunk.\n\n"
   end
 
   def invalid_input_message
@@ -74,6 +73,18 @@ module Messages
     puts "The computer has hit your ship!"
   end
 
+  def player_hit_ship_message
+    puts "You've hit a ship!"
+  end
+
+  def computer_turn_message
+    puts "It is now time for the computer to take a turn.\n\n"
+  end
+
+  def player_miss_message
+    puts "You've missed!\n\n"
+  end
+
   def computer_ship_miss_message
     puts "The computer has missed!"
   end
@@ -90,6 +101,18 @@ module Messages
      puts "Invalid Coordinate!\n
      Valid coordinates range from\n
      A1-A4, B1-B4, C1-C4, and D1-D4."
+  end
+
+  def quit_message
+    puts "You've decided to QUIT the game.  Bye!"
+  end
+
+  def player_win_message
+    puts "Congratulations, you've won the game of BATTLESHIP!!!"
+  end
+
+  def computer_win_message
+    puts "Womp, Womp!!! You've the game of BATTLESHIP lost to a lowly computer!"
   end
 
 end

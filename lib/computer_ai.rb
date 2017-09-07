@@ -15,10 +15,8 @@ class ComputerAI
               :rounds_on_target
   def initialize
     @board = Board.new
-    @player_destroyer = []
-    @player_battleship = []
-    @computer_destroyer = []
-    @computer_battleship = []
+    @destroyer = []
+    @battleship = []
     @rounds_on_target = []
   end
 
@@ -42,12 +40,12 @@ class ComputerAI
       self.firing_sequence(player_board)
     elsif determine_target_previously_shot_at(target, player_board) == false
       if determine_target_occupation_status(target, player_board) == true
-        player_board.board[target][:symbol] = "H"
+        player_board.board[target][:symbol] = "\u{1F4A5}"
         player_board.board[target][:shot_at] = true
         @rounds_on_target << target
         puts computer_ship_hit_message
       elsif determine_target_occupation_status(target, player_board) == false
-        player_board.board[target][:symbol] = "M"
+        player_board.board[target][:symbol] = "\u{2716}"
         player_board.board[target][:shot_at] = true
         puts computer_ship_miss_message
       end

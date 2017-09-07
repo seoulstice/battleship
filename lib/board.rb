@@ -1,7 +1,5 @@
 class Board
-  attr_accessor :board,
-                :board_output
-
+  attr_accessor :board
   def initialize
     @board = {"A1" => {:occupied => false, :shot_at => false, :symbol => "\u{1F30A}"},
               "A2" => {:occupied => false, :shot_at => false, :symbol => "\u{1F30A}"},
@@ -20,17 +18,4 @@ class Board
               "D3" => {:occupied => false, :shot_at => false, :symbol => "\u{1F30A}"},
               "D4" => {:occupied => false, :shot_at => false, :symbol => "\u{1F30A}"}}
   end
-
-  def board_output
-    top_border    =  "==================="
-    numbers       = [".", "  1  ", " 2  ", " 3  ", " 4  "].join
-    row_a         = ["A", "  #{@board["A1"][:symbol]} ", "  #{@board["A2"][:symbol]}  ", " #{@board["A3"][:symbol]}  ", " #{@board["A4"][:symbol]}  "].join
-    row_b         = ["B", "  #{@board["B1"][:symbol]} ", "  #{@board["B2"][:symbol]}  ", " #{@board["B3"][:symbol]}  ", " #{@board["B4"][:symbol]}  "].join
-    row_c         = ["C", "  #{@board["C1"][:symbol]} ", "  #{@board["C2"][:symbol]}  ", " #{@board["C3"][:symbol]}  ", " #{@board["C4"][:symbol]}  "].join
-    row_d         = ["D", "  #{@board["D1"][:symbol]} ", "  #{@board["D2"][:symbol]}  ", " #{@board["D3"][:symbol]}  ", " #{@board["D4"][:symbol]}  "].join
-    bottom_border = "==================="
-    # board_key     = "#{\u1F95A} goose egg #{\u1F30A} : empty ocean "
-    print "\n#{top_border}\n#{numbers}\n#{row_a}\n#{row_b}\n#{row_c}\n#{row_d}\n#{bottom_border}\n#{board_key}\n\n"
-  end
-
 end

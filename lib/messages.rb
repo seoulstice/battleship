@@ -20,11 +20,7 @@ module Messages
   end
 
   def computer_ship_placement_complete_message
-    puts "I have laid out my ships on the grid.
-    You now need to layout your two ships.
-    The destroyer is two units long and the
-    battleship is three units long.
-    The grid has A1 at the top left and D4 at the bottom right."
+    puts "I have laid out my ships on the grid.\nYou now need to layout your two ships.\nThe destroyer is two units long and the\nbattleship is three units long. The grid has\nA1 at the top left and D4 at the bottom right."
   end
 
   def destroyer_first_coordinate_message
@@ -45,8 +41,7 @@ module Messages
   end
 
   def successful_ship_placement_message
-    puts "     You've successfully placed your ships!\n
-     Prepare for a game of BATTLESHIP!!!\n\n"
+    puts "You've successfully placed your ships! Prepare for a game of BATTLESHIP!!!\n\n"
   end
 
   def battleship_coordinate_display_message
@@ -74,7 +69,7 @@ module Messages
   end
 
   def player_hit_ship_message
-    puts "You've hit a ship!"
+    puts "You've hit a ship!\n"
   end
 
   def computer_turn_message
@@ -83,6 +78,14 @@ module Messages
 
   def player_miss_message
     puts "You've missed!\n\n"
+  end
+
+  def computer_board_message
+    puts "Computer's Board"
+  end
+
+  def user_board_message
+    puts "Player's Board"
   end
 
   def computer_ship_miss_message
@@ -98,9 +101,7 @@ module Messages
   end
 
   def invalid_player_coord_placement_message
-     puts "Invalid Coordinate!\n
-     Valid coordinates range from\n
-     A1-A4, B1-B4, C1-C4, and D1-D4."
+     puts "Invalid Coordinate! Valid coordinates range from A1-A4, B1-B4, C1-C4, and D1-D4."
   end
 
   def quit_message
@@ -111,8 +112,31 @@ module Messages
     puts "Congratulations, you've won the game of BATTLESHIP!!!"
   end
 
-  def computer_win_message
-    puts "Womp, Womp!!! You've the game of BATTLESHIP lost to a lowly computer!"
+  def battleship_sunk_message
+    puts "The Battleship has been sunk!"
   end
+
+  def destroyer_sunk_message
+    puts "The Destroyer has been sunk!"
+  end
+
+  def computer_win_message
+    puts "Womp, Womp!!! You've lost the game of BATTLESHIP to a lowly computer!"
+  end
+
+  def board_graphic_output_message(player)
+    top_border    =  "==================="
+    numbers       = [".", "  1  ", " 2  ", " 3  ", " 4  "].join
+    row_a         = ["A", "  #{player.board.board["A1"][:symbol]} ", "  #{player.board.board["A2"][:symbol]}  ", " #{player.board.board["A3"][:symbol]}  ", " #{player.board.board["A4"][:symbol]}  "].join
+    row_b         = ["B", "  #{player.board.board["B1"][:symbol]} ", "  #{player.board.board["B2"][:symbol]}  ", " #{player.board.board["B3"][:symbol]}  ", " #{player.board.board["B4"][:symbol]}  "].join
+    row_c         = ["C", "  #{player.board.board["C1"][:symbol]} ", "  #{player.board.board["C2"][:symbol]}  ", " #{player.board.board["C3"][:symbol]}  ", " #{player.board.board["C4"][:symbol]}  "].join
+    row_d         = ["D", "  #{player.board.board["D1"][:symbol]} ", "  #{player.board.board["D2"][:symbol]}  ", " #{player.board.board["D3"][:symbol]}  ", " #{player.board.board["D4"][:symbol]}  "].join
+    bottom_border = "==================="
+    puts "\n#{top_border}\n#{numbers}\n#{row_a}\n#{row_b}\n#{row_c}\n#{row_d}\n#{bottom_border}\n\n"
+  end
+
+
+
+
 
 end

@@ -1,4 +1,3 @@
-
 require './lib/game_sequence'
 require './lib/messages'
 require 'colorize'

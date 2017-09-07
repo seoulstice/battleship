@@ -93,4 +93,18 @@ class ComputerAI
   def third_coordinate(key)
     ship_third_space[key].sample
   end
+
+  def check_rounds_on_target_against_opponent_destroyer(opponent)
+    shared = opponent.board.destroyer & rounds_on_target
+    if shared.length == 2
+      destroyer_sunk_message
+    end
+  end
+
+  def check_rounds_on_target_against_opponent_battleship(opponent)
+    shared = opponent.board.battleship & rounds_on_target
+    if shared.length == 3
+      battleship_sunk_message
+    end
+  end
 end

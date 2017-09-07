@@ -146,18 +146,16 @@ class Player
     end
   end
 
-  def check_target_on_opponent_board(opponent, target)
-    if opponent.destroyer.include?(target)
-      opponent.destroyer.delete(target)
-    elsif opponent.battleship.include?(target)
-      opponent.battleship.delete(target)
+  def check_rounds_on_target_against_opponent_destroyer(opponent)
+    shared = opponent.board.destroyer & rounds_on_target
+    if shared.length == 2
+      destroyer_sunk_message
     end
   end
 
-  def check_if_ship_sunk(opponent)
-    if opponent.destroyer.length == 0
-      destroyer_sunk_message
-    elsif opponent.battleship.length == 0
+  def check_rounds_on_target_against_opponent_battleship(opponent)
+    shared = opponent.board.battleship & rounds_on_target
+    if shared.length == 3
       battleship_sunk_message
     end
   end

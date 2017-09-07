@@ -50,16 +50,17 @@ class GameSequence
     computer_board_message
     board_graphic_output_message(computer)
     @player_shot_count += 1
+    check_rounds_on_target_against_opponent_destroyer(player, computer)
+    check_rounds_on_target_against_opponent_battleship(player, computer)
     check_game_over_for_player(player)
-
-    #check which ship sunk
     computer_turn_message
     computer.firing_sequence(player.board)
     user_board_message
     board_graphic_output_message(player)
     @computer_shot_count += 1
+    check_rounds_on_target_against_opponent_destroyer(computer, player)
+    check_rounds_on_target_against_opponent_battleship(computer, player)
     check_game_over_for_computer(computer)
-
   end
 
   def check_game_over_for_player(user)
@@ -78,19 +79,18 @@ class GameSequence
     end
   end
 
-  def check_target_on_opponent_board(opponent, target)
-    if opponent.destroyer.include?(target)
-      opponent.destroyer.delete(target)
-    elsif opponent.battleship.include?(target)
-      opponent.battleship.delete(target)
+  def check_rounds_on_target_against_opponent_destroyer(player, opponent)
+    shared = opponent.destroyer & player.rounds_on_target
+    if shared.length == 2
+      destroyer_sunk_message
     end
   end
 
-  def check_if_ship_sunk(opponent)
-    if opponent.destroyer.length == 0
-      destroyer_sunk_message
-    elsif opponent.battleship.length == 0
+  def check_rounds_on_target_against_opponent_battleship(player, opponent)
+    shared = opponent.battleship & player.rounds_on_target
+    if shared.length == 3
       battleship_sunk_message
     end
   end
+
 end

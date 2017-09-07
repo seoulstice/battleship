@@ -125,8 +125,6 @@ module Messages
     puts "Womp, Womp!!! You've lost the game of BATTLESHIP to a lowly computer!"
   end
 
-  
-
   def board_graphic_output_message(player)
     top_border    =  "==================="
     numbers       = [".", "  1  ", " 2  ", " 3  ", " 4  "].join
@@ -137,9 +135,4 @@ module Messages
     bottom_border = "==================="
     puts "\n#{top_border}\n#{numbers}\n#{row_a}\n#{row_b}\n#{row_c}\n#{row_d}\n#{bottom_border}\n\n"
   end
-
-
-
-
-
 end

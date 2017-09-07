@@ -93,5 +93,4 @@ class ComputerAI
   def third_coordinate(key)
     ship_third_space[key].sample
   end
-
 end

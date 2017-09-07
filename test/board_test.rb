@@ -14,5 +14,4 @@ class BoardTest < Minitest::Test
 
     assert board.board
   end
-
 end

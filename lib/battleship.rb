@@ -33,7 +33,6 @@ class Battleship
     quit_message
     exit
   end
-
 end
 
 battleship = Battleship.new

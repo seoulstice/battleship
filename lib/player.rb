@@ -141,8 +141,24 @@ class Player
         self.firing_sequence(computer_board)
       end
     elsif determine_if_user_input_is_valid(target, computer_board) == false
-      # invalid input message
+      invalid_input_message
       self.firing_sequence(computer_board)
+    end
+  end
+
+  def check_target_on_opponent_board(opponent, target)
+    if opponent.destroyer.include?(target)
+      opponent.destroyer.delete(target)
+    elsif opponent.battleship.include?(target)
+      opponent.battleship.delete(target)
+    end
+  end
+
+  def check_if_ship_sunk(opponent)
+    if opponent.destroyer.length == 0
+      destroyer_sunk_message
+    elsif opponent.battleship.length == 0
+      battleship_sunk_message
     end
   end
 end

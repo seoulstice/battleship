@@ -49,18 +49,8 @@ class ComputerAI
         player_board.board[target][:shot_at] = true
         puts computer_ship_miss_message
       end
-
     end
   end
-
-  # NEED? method to determine which ship is hit
-
-  # NEED method to determine when ship is sunk
-
-  # NEED method to determine how many successfull hits
-
-  # NEED if 5 successful hits win?
-
 
   def confirm_hit_or_miss(target)
     if @target_board.board[target][:occupied] = true
@@ -103,4 +93,5 @@ class ComputerAI
   def third_coordinate(key)
     ship_third_space[key].sample
   end
+
 end

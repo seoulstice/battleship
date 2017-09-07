@@ -8,11 +8,17 @@ class GameSequence
                 :player,
                 :board,
                 :player_shot_count,
-                :computer_shot_count
+                :computer_shot_count,
+                :opponent_destroyer,
+                :opponent_battleship,
+                :computer_destroyer,
+                :computer_battleship,
+                :start,
+                :end
 
   def initialize
-    @opponent_destroyer = []
-    @opponent_battleship = []
+    @human_destroyer = []
+    @human_battleship = []
     @computer_destroyer = []
     @computer_battleship = []
     @computer = ComputerAI.new
@@ -20,16 +26,15 @@ class GameSequence
     @board = Board.new
     @player_shot_count = 0
     @computer_shot_count = 0
+    @start = Time.now
     game_sequence
   end
 
   def game_sequence
-    @start = Time.now
     placement_of_ships
     until player.rounds_on_target == 5 || computer.rounds_on_target == 5
       shot_sequence(player, computer)
     end
-
   end
 
   def placement_of_ships
@@ -45,25 +50,21 @@ class GameSequence
     computer_board_message
     board_graphic_output_message(computer)
     @player_shot_count += 1
-    check_if_destroyer_sunk(player, computer)
-    check_if_battleship_sunk(player, computer)
     check_game_over_for_player(player)
+
     #check which ship sunk
     computer_turn_message
     computer.firing_sequence(player.board)
     user_board_message
     board_graphic_output_message(player)
     @computer_shot_count += 1
-    check_if_destroyer_sunk(computer, player)
-    check_if_battleship_sunk(computer, player)
     check_game_over_for_computer(computer)
-    #check which ship sunk
+
   end
 
   def check_game_over_for_player(user)
     if user.rounds_on_target.length == 5
       player_win_message
-      exit
     end
   end
 
@@ -74,26 +75,19 @@ class GameSequence
     end
   end
 
-  def check_if_destroyer_sunk(attacker, opponent)
-    opponent.destroyer.each do |coord|
-      opponent_destroyer << coord
-    end
-    combo = opponent_destroyer & attacker.rounds_on_target
-    if combo.length == 2
-      destroyer_sunk_message
+  def check_target_on_opponent_board(opponent, target)
+    if opponent.destroyer.include?(target)
+      opponent.destroyer.delete(target)
+    elsif opponent.battleship.include?(target)
+      opponent.battleship.delete(target)
     end
   end
 
-  def check_if_battleship_sunk(attacker, opponent)
-    opponent.battleship.each do |coord|
-      opponent_battleship << coord
-    end
-    combo = opponent_battleship & attacker.rounds_on_target
-    if combo.length == 3
+  def check_if_ship_sunk(opponent)
+    if opponent.destroyer.length == 0
+      destroyer_sunk_message
+    elsif opponent.battleship.length == 0
       battleship_sunk_message
     end
   end
-
-
-
 end

@@ -1,5 +1,6 @@
 require './lib/ship_coordinates'
 require './lib/board'
+
 module Messages
   include ShipCoordinates
 
@@ -108,10 +109,6 @@ module Messages
     puts "You've decided to QUIT the game.  Bye!"
   end
 
-  def player_win_message
-    puts "Congratulations, you've won the game of BATTLESHIP!!!"
-  end
-
   def battleship_sunk_message
     puts "The Battleship has been sunk!"
   end
@@ -120,9 +117,15 @@ module Messages
     puts "The Destroyer has been sunk!"
   end
 
+  def player_win_message
+    puts "Congratulations, you've won the game of BATTLESHIP!!! "
+  end
+
   def computer_win_message
     puts "Womp, Womp!!! You've lost the game of BATTLESHIP to a lowly computer!"
   end
+
+  
 
   def board_graphic_output_message(player)
     top_border    =  "==================="

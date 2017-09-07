@@ -110,11 +110,11 @@ module Messages
   end
 
   def battleship_sunk_message
-    puts "The Battleship has been sunk!"
+    puts "The Battleship has been sunk! It was 3-units long."
   end
 
   def destroyer_sunk_message
-    puts "The Destroyer has been sunk!"
+    puts "The Destroyer has been sunk!  It was 2-units long."
   end
 
   def player_win_message(time, counter)

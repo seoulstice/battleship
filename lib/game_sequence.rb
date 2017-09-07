@@ -63,14 +63,17 @@ class GameSequence
   end
 
   def check_game_over_for_player(user)
+    gameplay_time = Time.now - @start
     if user.rounds_on_target.length == 5
-      player_win_message
+      player_win_message(gameplay_time, player_shot_count)
+      exit
     end
   end
 
   def check_game_over_for_computer(user)
+    gameplay_time = Time.now - @start
     if user.rounds_on_target.length == 5
-      computer_win_message
+      computer_win_message(gameplay_time, computer_shot_count )
       exit
     end
   end

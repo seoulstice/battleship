@@ -117,12 +117,12 @@ module Messages
     puts "The Destroyer has been sunk!"
   end
 
-  def player_win_message
-    puts "Congratulations, you've won the game of BATTLESHIP!!! "
+  def player_win_message(time, counter)
+    puts "Congratulations, you've won the game of BATTLESHIP!!! It took you #{(time).round(2)} seconds and #{counter} shots to win!"
   end
 
-  def computer_win_message
-    puts "Womp, Womp!!! You've lost the game of BATTLESHIP to a lowly computer!"
+  def computer_win_message(time, counter)
+    puts "Womp, Womp!!! You've lost the game of BATTLESHIP to a lowly computer! It took the computer #{(time).round(2)} seconds and #{counter} shots to beat you!"
   end
 
   def board_graphic_output_message(player)

@@ -3,7 +3,7 @@ require './lib/player'
 require './lib/ship_coordinates'
 require './lib/messages'
 require './lib/validations'
-require 'pry'
+
 
 class ComputerAI
   include ShipCoordinates

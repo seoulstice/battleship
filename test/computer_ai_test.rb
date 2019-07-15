@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'minitest/emoji'
 require './lib/computer_ai'
 require './lib/player'
 require './lib/ship_coordinates'
@@ -8,7 +7,7 @@ class ComputerAITest < Minitest::Test
   include ShipCoordinates
   def test_computer_brain_exists
     brain = ComputerAI.new
-binding.pry
+
     assert_instance_of ComputerAI, brain
   end
 

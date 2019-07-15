@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'minitest/emoji'
 require './lib/player'
 require 'pry'
 

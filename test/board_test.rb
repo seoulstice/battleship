@@ -1,4 +1,3 @@
-require 'minitest/emoji'
 require 'minitest/autorun'
 require './lib/board'
 

@@ -45,7 +45,7 @@ class ComputerAI
         @rounds_on_target << target
         puts computer_ship_hit_message
       elsif determine_target_occupation_status(target, player_board) == false
-        player_board.board[target][:symbol] = "\u{2716}"
+        player_board.board[target][:symbol] = "\u{2716} "
         player_board.board[target][:shot_at] = true
         puts computer_ship_miss_message
       end

@@ -25,7 +25,7 @@ class GameMenu
   end
 
   def start_game
-    game = GameSequence.new
+    GameSequence.new
   end
 
   def quit_game

@@ -126,13 +126,13 @@ module Messages
   end
 
   def board_graphic_output_message(player)
-    top_border    =  "==================="
-    numbers       = [".", "  1  ", " 2  ", " 3  ", " 4  "].join
-    row_a         = ["A", "  #{player.board.board["A1"][:symbol]} ", "  #{player.board.board["A2"][:symbol]}  ", " #{player.board.board["A3"][:symbol]}  ", " #{player.board.board["A4"][:symbol]}  "].join
-    row_b         = ["B", "  #{player.board.board["B1"][:symbol]} ", "  #{player.board.board["B2"][:symbol]}  ", " #{player.board.board["B3"][:symbol]}  ", " #{player.board.board["B4"][:symbol]}  "].join
-    row_c         = ["C", "  #{player.board.board["C1"][:symbol]} ", "  #{player.board.board["C2"][:symbol]}  ", " #{player.board.board["C3"][:symbol]}  ", " #{player.board.board["C4"][:symbol]}  "].join
-    row_d         = ["D", "  #{player.board.board["D1"][:symbol]} ", "  #{player.board.board["D2"][:symbol]}  ", " #{player.board.board["D3"][:symbol]}  ", " #{player.board.board["D4"][:symbol]}  "].join
-    bottom_border = "==================="
+    top_border    =  "========================="
+    numbers       = ["  .  ", "  1  ", "  2  ", "  3  ", "  4  "].join
+    row_a         = ["  A  ", "  #{player.board.board["A1"][:symbol]} ", "  #{player.board.board["A2"][:symbol]} ", "  #{player.board.board["A3"][:symbol]} ", "  #{player.board.board["A4"][:symbol]} "].join
+    row_b         = ["  B  ", "  #{player.board.board["B1"][:symbol]} ", "  #{player.board.board["B2"][:symbol]} ", "  #{player.board.board["B3"][:symbol]} ", "  #{player.board.board["B4"][:symbol]} "].join
+    row_c         = ["  C  ", "  #{player.board.board["C1"][:symbol]} ", "  #{player.board.board["C2"][:symbol]} ", "  #{player.board.board["C3"][:symbol]} ", "  #{player.board.board["C4"][:symbol]} "].join
+    row_d         = ["  D  ", "  #{player.board.board["D1"][:symbol]} ", "  #{player.board.board["D2"][:symbol]} ", "  #{player.board.board["D3"][:symbol]} ", "  #{player.board.board["D4"][:symbol]} "].join
+    bottom_border = "========================="
     puts "\n#{top_border}\n#{numbers}\n#{row_a}\n#{row_b}\n#{row_c}\n#{row_d}\n#{bottom_border}\n\n"
   end
 end

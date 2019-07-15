@@ -132,7 +132,7 @@ class Player
           @rounds_on_target << target
           player_hit_ship_message
         elsif determine_target_occupation_status(target, computer_board) == false
-          computer_board.board[target][:symbol] = "\u{2716}"
+          computer_board.board[target][:symbol] = "\u{2716} "
           computer_board.board[target][:shot_at] = true
           player_miss_message
         end

@@ -80,10 +80,9 @@ class ComputerAITest < Minitest::Test
   end
 
   def test_brain_can_fire
-    skip
     brain = ComputerAI.new
     player = Player.new
-    brain.fire_on_target(player.board)
+    brain.firing_sequence(player.board)
 
     assert player.board.board.values[:shot_at].include?(true)
   end

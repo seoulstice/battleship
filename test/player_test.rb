@@ -55,6 +55,8 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_can_create_ships
+    skip 'Skipped because test requires User Input'
+
     player = Player.new
     player.create_ships
 
@@ -63,6 +65,8 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_can_create_destroyer
+    skip 'Skipped because test requires User Input'
+
     player = Player.new
     player.create_destroyer
 
@@ -70,6 +74,8 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_can_make_first_destroyer_coord
+    skip 'Skipped because test requires User Input'
+
     player = Player.new
     player.make_first_destroyer_coordinates
 
@@ -77,6 +83,8 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_can_make_second_destroyer_coord
+    skip 'Skipped because test requires User Input'
+
     player = Player.new
     player.make_second_destroyer_coordinates
 
@@ -84,6 +92,8 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_can_make_battleship
+    skip 'Skipped because test requires User Input'
+
     player = Player.new
     player.create_battleship
 
@@ -91,6 +101,8 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_can_make_first_battleship_coord
+    skip 'Skipped because test requires User Input'
+
     player = Player.new
     player.make_first_battleship_coordinates
 

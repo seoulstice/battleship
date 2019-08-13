@@ -1,5 +1,3 @@
-require './lib/board'
-require './lib/player'
 require './lib/ship_coordinates'
 require './lib/messages'
 require './lib/validations'

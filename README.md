@@ -16,7 +16,7 @@ Fork/clone the Battleship repository onto your local machine.
   `rake`  
 
   ## Creator  
-  [Young Joon Jung](https://github.com/seoulstice "Young Joon Jung's Github)
+  [Young Joon Jung](https://github.com/seoulstice "Young Joon Jung's Github")
 
 
 
